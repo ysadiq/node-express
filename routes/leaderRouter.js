@@ -1,11 +1,11 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 
-const dishRouter = express.Router();
+const leaderRouter = express.Router();
 
-dishRouter.use(bodyParser.json());
+leaderRouter.use(bodyParser.json());
 
-dishRouter.route('/')
+leaderRouter.route('/')
     .all((req, res, next) => {
         res.statusCode = 200;
         res.setHeader('Content-Types', 'text/plain');
@@ -28,7 +28,7 @@ dishRouter.route('/')
         res.end('Deleting all the leaders!');
     });
 
-dishRouter.route('/:leaderId')
+leaderRouter.route('/:leaderId')
     .all((req, res, next) => {
         res.statusCode = 200;
         res.setHeader('Content-Types', 'text/plain');
@@ -51,4 +51,4 @@ dishRouter.route('/:leaderId')
         res.end('Deleting leader: ' + req.params.leaderId);
     });
 
-module.exports = dishRouter;
+module.exports = leaderRouter;
