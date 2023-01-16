@@ -12,43 +12,43 @@ dishRouter.route('/')
         next();
     })
     .get((req, res, next) => {
-        res.end('Will send all the dishes to you!');
+        res.end('Will send all the leaders to you!');
     })
     .post((req, res, next) => {
-        res.end('Will add the dish: ' 
+        res.end('Will add the leader: ' 
         + req.body.name 
         + ' with detail: ' 
         + req.body.description);
     })
     .put((req, res, next) => {
         res.statusCode = 403;
-        res.end('PUT operation is not supported on /dishes');
+        res.end('PUT operation is not supported on /leaders');
     })
     .delete((req, res, next) => {
-        res.end('Deleting all the dishes!');
+        res.end('Deleting all the leaders!');
     });
 
-dishRouter.route('/:dishId')
+dishRouter.route('/:leaderId')
     .all((req, res, next) => {
         res.statusCode = 200;
         res.setHeader('Content-Types', 'text/plain');
         next();
     })
     .get((req, res, next) => {
-        res.end('Will send the dish of ' + req.params.dishId + ' to you!');
+        res.end('Will send the leader of ' + req.params.leaderId + ' to you!');
     })
     .post((req, res, next) => {
         res.statusCode = 403;
-        res.end('POST operation is not supported on /dishes/' + req.params.dishId);
+        res.end('POST operation is not supported on /leaders');
     })
     .put((req, res, next) => {
-        res.end('Updating the dish: ' + req.params.dishId 
-        + '\n will update the dish: ' + req.body.name 
+        res.end('Updating the leader: ' + req.params.leaderId 
+        + '\n will update the leader: ' + req.body.name 
         + ' with detail: ' 
         + req.body.description);
     })
     .delete((req, res, next) => {
-        res.end('Deleting dish: ' + req.params.dishId);
+        res.end('Deleting leader: ' + req.params.leaderId);
     });
 
 module.exports = dishRouter;
